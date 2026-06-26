@@ -1,0 +1,49 @@
+[
+  {
+    "customer_id": "CUST001",
+    "name": "Aarav Sharma",
+    "pan": "ABCDE1234F",
+    "aadhaar": "123456789012",
+    "phone": "+919876543210",
+    "email": "aarav.sharma@example.com",
+    "kyc_status": "COMPLETED",
+    "risk_score": 12,
+    "accounts": [
+      {
+        "account_number": "SBI100020003001",
+        "account_type": "SAVINGS",
+        "balance": 150000.50,
+        "upi_id": "aarav@oksbi"
+      }
+    ]
+  },
+  {
+    "customer_id": "CUST002",
+    "name": "Priya Patel",
+    "pan": "FGHIJ5678K",
+    "aadhaar": "987654321098",
+    "phone": "+919876543211",
+    "email": "priya.patel@example.com",
+    "kyc_status": "PENDING",
+    "risk_score": 45,
+    "accounts": []
+  },
+  {
+    "customer_id": "CUST003",
+    "name": "Rohan Verma",
+    "pan": "KLMNO9012P",
+    "aadhaar": "456789012345",
+    "phone": "+919876543212",
+    "email": "rohan.verma@example.com",
+    "kyc_status": "COMPLETED",
+    "risk_score": 85,
+    "accounts": [
+      {
+        "account_number": "SBI100020003002",
+        "account_type": "SAVINGS",
+        "balance": 25000.00,
+        "upi_id": "rohan@oksbi"
+      }
+    ]
+  }
+]
