@@ -65,7 +65,7 @@ export default function BankerDashboard({ onCustomerSelect, refreshTrigger }) {
   );
 
   // ECharts Graph Configuration
-  const getGraphOption = () => {
+  const graphOption = React.useMemo(() => {
     if (!graphData.nodes || graphData.nodes.length === 0) return {};
 
     // Filter nodes/links if a customer is selected to focus the view, or display full registry graph
@@ -117,7 +117,7 @@ export default function BankerDashboard({ onCustomerSelect, refreshTrigger }) {
         size = 22;
         color = '#f59e0b'; // Amber for risks
         categoryIdx = 2;
-        if (node.id.includes('High') || node.id.includes('Crypto')) {
+        if (node.id && typeof node.id === 'string' && (node.id.includes('High') || node.id.includes('Crypto'))) {
           color = '#ef4444'; // Red for severe risk
         }
       } else if (node.type === 'Product') {
@@ -208,7 +208,7 @@ export default function BankerDashboard({ onCustomerSelect, refreshTrigger }) {
         }
       ]
     };
-  };
+  }, [graphData, selectedCust]);
 
   const handleRowClick = (cust) => {
     setSelectedCust(cust);
@@ -408,7 +408,7 @@ export default function BankerDashboard({ onCustomerSelect, refreshTrigger }) {
             {/* ECharts Network Memory Graph */}
             <div className="bg-zinc-950 border border-zinc-800 rounded-xl h-64 overflow-hidden relative">
               <ReactECharts 
-                option={getGraphOption()} 
+                option={graphOption} 
                 style={{ height: '100%', width: '100%' }}
                 notMerge={true}
               />
