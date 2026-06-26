@@ -72,15 +72,15 @@ export default function ChatWidget({ onActionCompleted, selectedCustomer }) {
         ...prev,
         {
           sender: 'bot',
-          text: res.data.response,
-          agent: res.data.agent,
-          status: res.data.status,
-          risk: res.data.risk_indicator
+          text: res.data.reply || res.data.response || "No response received",
+          agent: res.data.stage || "Agent",
+          status: res.data.stage || res.data.status,
+          risk: res.data.risk_indicator || (res.data.reply && res.data.reply.includes("CRITICAL") ? "Suspicious Activity" : null)
         }
       ]);
 
       // Trigger dashboard reload on completions
-      if (res.data.status === 'COMPLETED' || res.data.status === 'FLAGGED') {
+      if (res.data.stage === 'COMPLETED' || res.data.status === 'COMPLETED' || res.data.stage === 'FLAGGED') {
         if (onActionCompleted) onActionCompleted();
       }
     } catch (err) {

@@ -89,7 +89,7 @@ async def health():
         "service": "FinSense AI Backend"
     }
 
-@app.post("/chat")
+@app.post("/api/chat")
 async def chat_endpoint(req: ChatRequest):
     """
     Main conversational agent endpoint.
